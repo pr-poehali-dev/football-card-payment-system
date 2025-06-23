@@ -13,12 +13,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-blue-500 to-orange-500 p-2 rounded-lg">
-              <Icon name="Trophy" className="text-white" size={24} />
-            </div>
-            <span className="text-2xl font-bold text-gray-800">
-              AllStarMint
-            </span>
+            <img
+              src="https://cdn.poehali.dev/files/63e43a9e-5800-44a6-a39b-6cce43469dd8.png"
+              alt="AllStarMint Trading"
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Search */}
