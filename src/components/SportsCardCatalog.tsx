@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
+import { useCart } from "@/contexts/CartContext";
 
 interface SportsCard {
   id: number;
@@ -87,6 +88,7 @@ const SportsCardCatalog = () => {
   const [sportFilter, setSportFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
   const [priceSort, setPriceSort] = useState("none");
+  const { addToCart } = useCart();
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -273,7 +275,18 @@ const SportsCardCatalog = () => {
             </CardContent>
 
             <CardFooter className="p-4 pt-0">
-              <Button className="w-full flex items-center justify-center space-x-2">
+              <Button
+                className="w-full flex items-center justify-center space-x-2"
+                onClick={() =>
+                  addToCart({
+                    id: card.id,
+                    name: card.name,
+                    player: card.player,
+                    price: card.price,
+                    image: card.image,
+                  })
+                }
+              >
                 <Icon name="ShoppingCart" size={16} />
                 <span>В корзину</span>
               </Button>

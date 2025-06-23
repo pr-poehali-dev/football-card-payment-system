@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useCart } from "@/contexts/CartContext";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -59,9 +60,17 @@ const Header = () => {
             >
               Оплата
             </Link>
-            <Button variant="outline" className="flex items-center space-x-2">
+            <Button
+              variant="outline"
+              className="flex items-center space-x-2 relative"
+            >
               <Icon name="ShoppingCart" size={16} />
               <span>Корзина</span>
+              {useCart().getTotalItems() > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {useCart().getTotalItems()}
+                </span>
+              )}
             </Button>
           </nav>
 
